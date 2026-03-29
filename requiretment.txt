@@ -1,0 +1,225 @@
+ file structure 
+Controller/     # Business logic (login, add_to_cart, etc.)
+Middleware/     # Auth checks (JWT verification)
+Model/          # Mongoose Schemas (User, Product, Cart)
+Route/          # API Endpoints definition
+.env            # Environment variables (Secret keys, DB URL)
+server.js       # Entry point
+
+
+run server with npm run dev 
+
+//User Module 
+Register - create user 
+
+url-http://localhost:5000/users/register
+
+   example -{
+    "name":"ansh",
+    "email":"ansh@gmail.com",
+    "password":"123456"
+}
+
+Login user with email and password 
+
+ url- http://localhost:5000/users/login
+    {
+    "email":"ansh@gmail.com",
+    "password":"123456"
+}
+
+get response {
+    "message": "User Login Successfully with name: ansh",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+    eyJpZCI6IjY5YzhhNDI3NDBiNTc3YjNiZDgzYjVmMiIsImlhdCI6MT
+    c3NDc2MjY3MSwiZXhwIjoxNzc0NzY2MjcxfQ.ovZ6hRQ3RRbIQ7OfOvc
+    ZiAt4JC5Y9W-bOpqEr4OmMpk"
+}
+
+//Product Module 
+
+add product 
+
+url-http://localhost:5000/products/add
+
+req-{
+"name":"toy",
+"price":50,
+"quantity":20
+}  
+
+response -{
+    "message": "Product added successfully",
+    "productDetails": {
+        "name": "toy",
+        "price": 500,
+        "quantity": 20,
+        "_id": "69c8a44f40b577b3bd83b5f5",
+        "__v": 0
+    }
+}
+
+
+//get all product
+url -http://localhost:5000/products/list
+
+
+response -{
+    "message": "Product list ",
+    "products": [
+        {
+            "_id": "69c826b59987f84ec45cb0ec",
+            "name": "mobile",
+            "price": 10000,
+            "quantity": 10,
+            "__v": 0
+        },
+        {
+            "_id": "69c897355c644730cd18bd5d",
+            "name": "tv",
+            "price": 25000,
+            "quantity": 5,
+            "__v": 0
+        },
+        {
+            "_id": "69c89a3e60ca99603f84cf89",
+            "name": "AC",
+            "price": 30000,
+            "quantity": 1,
+            "__v": 0
+        },
+       
+        {
+            "_id": "69c8a44f40b577b3bd83b5f5",
+            "name": "toy",
+            "price": 500,
+            "quantity": 20,
+            "__v": 0
+        }
+    ]
+}
+
+
+//Cart module 
+
+
+addto cart 
+url-http://localhost:5000/cart/add
+
+req-{
+    "name":"AC",
+    "quantity":2
+} 
+
+reqponse-{
+    "message": "Hi ansh, product added successfully!",
+    "addedProduct": {
+        "productId": "69c89a3e60ca99603f84cf89",
+        "name": "AC",
+        "quantity": 2
+    }
+}
+
+
+getallcat
+url  -http://localhost:5000/cart/cartall
+
+response-{
+    "message": "Cart details",
+    "cart": [
+        {
+            "user": {
+                "userid": "69c8225aecf83f2e42e3dd64",
+                "name": "vivek"
+            },
+            "_id": "69c8ac264b3553d58c8fe7e0",
+            "Products": [
+                {
+                    "productId": "69c897355c644730cd18bd5d",
+                    "name": "tv",
+                    "quantity": 3,
+                    "_id": "69c8ac264b3553d58c8fe7e1"
+                }
+            ],
+            "__v": 0
+        },
+        {
+            "user": {
+                "userid": "69c8a42740b577b3bd83b5f2",
+                "name": "ansh"
+            },
+            "_id": "69c8ac5b4b3553d58c8fe7e9",
+            "Products": [
+                {
+                    "productId": "69c897355c644730cd18bd5d",
+                    "name": "tv",
+                    "quantity": 8,
+                    "_id": "69c8ac5b4b3553d58c8fe7ea"
+                },
+                {
+                    "productId": "69c8a44f40b577b3bd83b5f5",
+                    "name": "toy",
+                    "quantity": 10,
+                    "_id": "69c8bac3bf28e4869bf61106"
+                },
+                {
+                    "productId": "69c8a44f40b577b3bd83b5f5",
+                    "name": "toy",
+                    "quantity": 3,
+                    "_id": "69c8bb12bf28e4869bf61114"
+                },
+                {
+                    "productId": "69c89a3e60ca99603f84cf89",
+                    "name": "AC",
+                    "quantity": 2,
+                    "_id": "69c8bbb627b9eb50e054d18e"
+                }
+            ],
+            "__v": 3
+        }
+    ]
+}
+
+
+getcartbyid 
+
+url=http://localhost:5000/cart/mycart
+
+
+response-{
+    "message": "Hi ansh, your cart details",
+    "cart": {
+        "user": {
+            "userid": "69c8a42740b577b3bd83b5f2",
+            "name": "ansh"
+        },
+        "_id": "69c8ac5b4b3553d58c8fe7e9",
+        "Products": [
+            {
+                "productId": "69c897355c644730cd18bd5d",
+                "name": "tv",
+                "quantity": 8,
+                "_id": "69c8ac5b4b3553d58c8fe7ea"
+            },
+            {
+                "productId": "69c8a44f40b577b3bd83b5f5",
+                "name": "toy",
+                "quantity": 10,
+                "_id": "69c8bac3bf28e4869bf61106"
+            },
+            {
+                "productId": "69c8a44f40b577b3bd83b5f5",
+                "name": "toy",
+                "quantity": 3,
+                "_id": "69c8bb12bf28e4869bf61114"
+            },
+            {
+                "productId": "69c89a3e60ca99603f84cf89",
+                "name": "AC",
+                "quantity": 2,
+                "_id": "69c8bbb627b9eb50e054d18e"
+            }
+        ],
+        "__v": 3
+    }
+}
