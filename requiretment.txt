@@ -7,6 +7,9 @@ Route/          # API Endpoints definition
 server.js       # Entry point
 
 
+before run this project install all dependency by using this - npm install
+run server with npm run dev 
+
 run server with npm run dev 
 
 //User Module 
